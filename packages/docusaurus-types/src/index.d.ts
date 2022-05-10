@@ -71,8 +71,8 @@ export type I18nConfig = {
    */
   defaultLocale: string;
   /**
-   * Root folder where all locale folders are relative to. Can be absolute or
-   * relative to the config file.
+   * Root folder where all locale folders are located in. Can be absolute or
+   * relative to the site dir.
    */
   path: string;
   /** List of locales deployed on your site. Must contain `defaultLocale`. */
@@ -423,7 +423,8 @@ export type LoadContext = {
   outDir: string;
   /**
    * Directory where all source translations for the current locale can be found
-   * in. Constructed with `i18n.path` + `i18n.currentLocale.path` (e.g. i18n/en)
+   * in. Constructed with `i18n.path` + `i18n.currentLocale.path`
+   * (e.g. `<siteDir>/i18n/en`)
    */
   i18nDir: string;
   /**

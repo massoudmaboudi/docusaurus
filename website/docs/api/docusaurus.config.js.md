@@ -130,6 +130,7 @@ Example:
 module.exports = {
   i18n: {
     defaultLocale: 'en',
+    path: 'i18n',
     locales: ['en', 'fr'],
     localeConfigs: {
       en: {
@@ -150,6 +151,7 @@ module.exports = {
 ```
 
 - `defaultLocale`: The locale that (1) does not have its name in the base URL (2) gets started with `docusaurus start` without `--locale` option (3) will be used for the `<link hrefLang="x-default">` tag
+- `path`: Root folder where all locale folders are located in. Can be absolute or relative to the site dir.
 - `locales`: List of locales deployed on your site. Must contain `defaultLocale`.
 - `localeConfigs`: Individual options for each locale.
   - `label`: The label displayed for this locale in the locales dropdown.
