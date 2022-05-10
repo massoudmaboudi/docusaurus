@@ -10,12 +10,12 @@ import path from 'path';
 import pluginContentBlog from '../index';
 import type {DocusaurusConfig, LoadContext, I18n} from '@docusaurus/types';
 import {validateOptions} from '../options';
-import type {BlogPost} from '../types';
 import {normalizePluginOptions} from '@docusaurus/utils-validation';
 import {posixPath, getFileCommitDate} from '@docusaurus/utils';
 import type {
   PluginOptions,
   EditUrlFunction,
+  BlogPost,
 } from '@docusaurus/plugin-content-blog';
 
 function findByTitle(
@@ -41,6 +41,7 @@ function getI18n(locale: string): I18n {
     currentLocale: locale,
     locales: [locale],
     defaultLocale: locale,
+    path: 'i18n',
     localeConfigs: {[locale]: {calendar: 'gregory'}},
   };
 }
@@ -57,6 +58,7 @@ const getPlugin = async (
   i18n: I18n = DefaultI18N,
 ) => {
   const generatedFilesDir: string = path.resolve(siteDir, '.docusaurus');
+  const i18nDir = path.join(siteDir, i18n.path, i18n.currentLocale);
   const siteConfig = {
     title: 'Hello',
     baseUrl: '/',
@@ -68,6 +70,7 @@ const getPlugin = async (
       siteConfig,
       generatedFilesDir,
       i18n,
+      i18nDir,
     } as LoadContext,
     validateOptions({
       validate: normalizePluginOptions,
